@@ -13,6 +13,7 @@ function selecionaPrato(pratoSelecionado) {
   
     if (selecionadoAnt !== null){
         selecionadoAnt.classList.remove("selecionado");
+        valorPrato = 0;
     }
 
     const selecionadoIconeAnt = document.querySelector(".prato .exibirIcon");
@@ -35,8 +36,8 @@ function selecionaPrato(pratoSelecionado) {
     const preco1 = valor1[0].innerHTML;
     valorPrato = Number(preco1);
 
-    valorTotal += valorPrato;
-    console.log(valorTotal.toFixed(2));
+    //valorTotal += valorPrato;
+    console.log(valorPrato.toFixed(2));
 
     const qntdSelecionada = document.querySelectorAll(".selecionado").length;
     console.log(qntdSelecionada);
@@ -57,6 +58,7 @@ function selecionaBebida(bebidaSelecionada) {
 
     if (selecionadoAnt !== null){
         selecionadoAnt.classList.remove("selecionado");
+        valorBebida = 0;
     }
 
     if (selecionadoIconeAnt !== null){
@@ -75,8 +77,8 @@ function selecionaBebida(bebidaSelecionada) {
     let valor2 = bebidaSelecionada.getElementsByClassName("escondido");
     let preco2 = valor2[0].innerHTML;
     valorBebida = Number(preco2);
-    valorTotal += valorBebida;
-    console.log(valorTotal.toFixed(2));
+    //valorTotal += valorBebida;
+    console.log(valorBebida.toFixed(2));
 
     const qntdSelecionada = document.querySelectorAll(".selecionado").length;
     console.log(qntdSelecionada);
@@ -95,6 +97,7 @@ function selecionaSobremesa(sobremesaSelecionada) {
     
     if (selecionadoAnt !== null){ //borda
         selecionadoAnt.classList.remove("selecionado");
+        valorSobremesa = 0;
     }
 
     sobremesaSelecionada.classList.add("selecionado");
@@ -115,8 +118,8 @@ function selecionaSobremesa(sobremesaSelecionada) {
     let valor3 = sobremesaSelecionada.getElementsByClassName("escondido");
     let preco3 = valor3[0].textContent;
     valorSobremesa = Number(preco3);
-    valorTotal += valorSobremesa;
-    console.log(valorTotal.toFixed(2));
+    //valorTotal += valorSobremesa;
+    console.log(valorSobremesa.toFixed(2));
 
     const qntdSelecionada = document.querySelectorAll(".selecionado").length;
     const botao = document.querySelector("button");
@@ -132,6 +135,7 @@ function selecionaSobremesa(sobremesaSelecionada) {
 }
 
 function enviarPedido(){
+    valorTotal = valorPrato + valorBebida + valorSobremesa;
 
     let textoInicial = "Olá, gostaria de fazer o pedido:" + "\n";
     let textoPrato = "- Prato: " + nomePrato + "\n";
@@ -146,5 +150,5 @@ function enviarPedido(){
 
     let textoWhatasppFinal = "https://wa.me/5534984339233?text="+textoWhatasppInicial;
     console.log(textoWhatasppFinal);
-    window.location.href(textoWhatasppFinal);
+    window.location.replace(textoWhatasppFinal);
 }
