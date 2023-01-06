@@ -12,8 +12,9 @@
     <title>
       DrivenEats
     </title>
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
   </head>
-  <body class="largura">
+  <body>
     <header class="largura">
         <h1 class="logo">DrivenEats</h1>
         <h2 class="slogan">Sua comida em 6 minutos</h2>
@@ -21,18 +22,18 @@
 
     <div class="main largura">
         <div class="categoria">Primeiro, seu prato</div>
-        <div class="produtos">
-            <div data-test="dish" class="item prato selecionado">
+        <div class="produtos prato">
+            <div data-test="dish" class="item" onclick="selecionaPrato(this)" >
                 <img src="./imagens/parmegiana.jpeg">
                 <h1 data-test="item-name">Frango Parmegiana</h1>
                 <h2>Frango parmegiana com arroz e fritas</h2>
                 <p data-test="item-price">R$ 19,90</p>
                 <p class="escondido">19.90</p>
-                <div class="check exibir">
+                <div class="check">
                     <ion-icon name="checkmark-circle"></ion-icon>
                 </div>
             </div>
-            <div data-test="dish" class="item prato">
+            <div data-test="dish" class="item" onclick="selecionaPrato(this)">
                 <img src="./imagens/file.jpg">
                 <h1 data-test="item-name">Filé Mignon</h1>
                 <h2>Filé molho madeira com arroz e fritas</h2>
@@ -42,7 +43,7 @@
                     <ion-icon name="checkmark-circle"></ion-icon>
                 </div>
             </div>
-            <div data-test="dish" class="item prato">
+            <div data-test="dish" class="item" onclick="selecionaPrato(this)">
                 <img src="./imagens/peixe.jpg">
                 <h1 data-test="item-name">Peixe</h1>
                 <h2>Tilápia grelhada com batatas e salada</h2>
@@ -52,7 +53,7 @@
                     <ion-icon name="checkmark-circle"></ion-icon>
                 </div>   
             </div>
-            <div data-test="dish" class="item prato">
+            <div data-test="dish" class="item" onclick="selecionaPrato(this)">
                 <img src="./imagens/vegetariano.jpg">
                 <h1 data-test="item-name">Vegetariano</h1>
                 <h2>Arroz, feijão, rúcula e salada</h2>
@@ -64,8 +65,8 @@
             </div>
         </div>
         <div class="categoria">Agora, sua bebida</div>
-        <div class="produtos">
-            <div data-test="drink" class="item bebida">
+        <div class="produtos bebida">
+            <div data-test="drink" class="item" onclick="selecionaBebida(this)">
                 <img src="./imagens/coca.jpg">
                 <h1 data-test="item-name">Coca-Cola</h1>
                 <h2>Lata 350mL</h2>
@@ -75,7 +76,7 @@
                     <ion-icon name="checkmark-circle"></ion-icon>
                 </div>
             </div>
-            <div data-test="drink" class="item bebida">
+            <div data-test="drink" class="item" onclick="selecionaBebida(this)">
                 <img src="./imagens/guarana.jpg">
                 <h1 data-test="item-name">Guaraná Mineiro</h1>
                 <h2>Lata 350mL</h2>
@@ -85,7 +86,7 @@
                     <ion-icon name="checkmark-circle"></ion-icon>
                 </div>
             </div>
-            <div data-test="drink" class="item bebida">
+            <div data-test="drink" class="item" onclick="selecionaBebida(this)">
                 <img src="./imagens/coca-zero.jpg">
                 <h1 data-test="item-name">Coca-Cola Zero</h1>
                 <h2>Lata 350mL</h2>
@@ -95,7 +96,7 @@
                     <ion-icon name="checkmark-circle"></ion-icon>
                 </div>
             </div>
-            <div data-test="drink" class="item bebida">
+            <div data-test="drink" class="item" onclick="selecionaBebida(this)">
                 <img src="./imagens/fanta.jpg">
                 <h1 data-test="item-name">Fanta Laranja</h1>
                 <h2>Lata 350mL</h2>
@@ -107,8 +108,8 @@
             </div>
         </div>
         <div class="categoria">Por fim, sua sobremesa</div>
-        <div class="produtos">
-            <div data-test="dessert" class="item sobremesa">
+        <div class="produtos sobremesa">
+            <div data-test="dessert" class="item" onclick="selecionaSobremesa(this)">
                 <img src="./imagens/cookie.jpg">
                 <h1 data-test="item-name">Cookies</h1>
                 <h2>3 unidades</h2>
@@ -118,7 +119,7 @@
                     <ion-icon name="checkmark-circle"></ion-icon>
                 </div>
             </div>
-            <div data-test="dessert" class="item sobremesa">
+            <div data-test="dessert" class="item" onclick="selecionaSobremesa(this)">
                 <img src="./imagens/brigadeiro.jpg">
                 <h1 data-test="item-name">Brigadeiro</h1>
                 <h2>1 unidade</h2>
@@ -128,7 +129,7 @@
                     <ion-icon name="checkmark-circle"></ion-icon>
                 </div>
             </div>
-            <div data-test="dessert" class="item sobremesa">
+            <div data-test="dessert" class="item" onclick="selecionaSobremesa(this)">
                 <img src="./imagens/pudim.jpg">
                 <h1 data-test="item-name">Pudim</h1>
                 <h2>1 unidade</h2>
@@ -138,7 +139,7 @@
                     <ion-icon name="checkmark-circle"></ion-icon>
                 </div>
             </div>
-            <div data-test="dessert" class="item sobremesa">
+            <div data-test="dessert" class="item" onclick="selecionaSobremesa(this)">
                 <img src="./imagens/torta.jpg">
                 <h1 data-test="item-name">Torta Doce de Leite</h1>
                 <h2>1 pedaço</h2>
@@ -152,14 +153,9 @@
     </div>
    
     <footer class="largura">
-        <button data-test="order-btn" disabled> Selecione os 3 itens <br> para fechar o pedido
+        <button data-test="order-btn" disabled id="botao"> Selecione os 3 itens <br> para fechar o pedido
         </button>
     </footer>
 
     <script src="scripts.js"></script>
   </body>
-
-  
-
-
-  <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
