@@ -17,15 +17,15 @@ function selecionaPrato(pratoSelecionado) {
         selecionadoAnt.classList.remove("selecionado");
         valorPrato = 0;
     }
+    pratoSelecionado.classList.add("selecionado");
 
     //ícone
     const selecionadoIconeAnt = document.querySelector(".prato .exibirIcon");
     if (selecionadoIconeAnt !== null){
         selecionadoIconeAnt.classList.remove("exibirIcon");
     }
-    let allChildren = pratoSelecionado.querySelectorAll(":scope > div");
-    pratoSelecionado.classList.add("selecionado");
-    allChildren.forEach((item) => item.classList.add("exibirIcon"));
+    const allChildren1 = pratoSelecionado.querySelectorAll(":scope > div");
+    allChildren1.forEach((item) => item.classList.add("exibirIcon"));
 
     //nome do prato
     const nome1 = pratoSelecionado.getElementsByTagName("h1");
@@ -52,26 +52,25 @@ function selecionaBebida(bebidaSelecionada) {
         selecionadoAnt.classList.remove("selecionado");
         valorBebida = 0;
     }
+    bebidaSelecionada.classList.add("selecionado");
 
     //ícone
     const selecionadoIconeAnt = document.querySelector(".bebida .exibirIcon");
     if (selecionadoIconeAnt !== null){
         selecionadoIconeAnt.classList.remove("exibirIcon");
     }
-    let allChildren = bebidaSelecionada.querySelectorAll(":scope > div");
-    bebidaSelecionada.classList.add("selecionado");
-    allChildren.forEach((item) => item.classList.add("exibirIcon"));
-    
+    const allChildren2 = bebidaSelecionada.querySelectorAll(":scope > div");
+    allChildren2.forEach((item) => item.classList.add("exibirIcon"));
+
     //nome da bebida
     const nome2 = bebidaSelecionada.getElementsByTagName("h1");
     nomeBebida = nome2[0].innerHTML;
-    console.log(nomeBebida);
 
     //preço
     const valor2 = bebidaSelecionada.getElementsByClassName("escondido");
     const preco2 = valor2[0].innerHTML;
     valorBebida = Number(preco2);
-  
+
     //botão finalizar
     const qntdSelecionada = document.querySelectorAll(".selecionado").length;
     const botao = document.querySelector("button");
@@ -89,19 +88,19 @@ function selecionaSobremesa(sobremesaSelecionada) {
         valorSobremesa = 0;
     }
     sobremesaSelecionada.classList.add("selecionado");
-    
+
     //ícone
     const selecionadoIconeAnt = document.querySelector(".sobremesa .exibirIcon");
     if (selecionadoIconeAnt !== null){ 
         selecionadoIconeAnt.classList.remove("exibirIcon");
     } 
-    let allChildren = sobremesaSelecionada.querySelectorAll(":scope > div");
-    allChildren.forEach((item) => item.classList.add("exibirIcon"));
+    const allChildren3 = sobremesaSelecionada.querySelectorAll(":scope > div");
+    allChildren3.forEach((item) => item.classList.add("exibirIcon"));
 
     //nome da sobremesa
     const nome3 = sobremesaSelecionada.getElementsByTagName("h1");
     nomeSobremesa = nome3[0].innerHTML;
-    
+
     //preço
     const valor3 = sobremesaSelecionada.getElementsByClassName("escondido");
     const preco3 = valor3[0].textContent;
@@ -123,15 +122,15 @@ function revisarPedido(){
     const limparTela = document.querySelector(".inativaFundo");
     limparTela.classList.remove("escondido");
 
-    const revisarPedido = document.querySelector(".confirmarPedido");
-    revisarPedido.classList.remove("escondido");
+    const revisaPedido = document.querySelector(".confirmarPedido");
+    revisaPedido.classList.remove("escondido");
 
     const editarListaPedidos = document.querySelector(".pedido");
     editarListaPedidos.innerHTML = nomePrato + "<br>" + nomeBebida + "<br>" + nomeSobremesa;
 
     const editarListaPrecos = document.querySelector(".precos");
     editarListaPrecos.innerHTML = "R$ " + valorPrato.toFixed(decimais) + "<br>" + "R$ " + valorBebida.toFixed(decimais) + "<br>" + "R$ " + valorSobremesa.toFixed(decimais);
-    
+
     valorTotal = valorPrato + valorBebida + valorSobremesa;
 
     const editarTotal = document.querySelector(".valor");
@@ -143,7 +142,7 @@ function enviarPedido(){
     const textoPrato = "- Prato: " + nomePrato + "\n";
     const textoBebida = "- Bebida: " + nomeBebida + "\n";
     const textoSobremesa = "- Sobremesa: "+ nomeSobremesa + "\n";
-    const textoValor = "Total: R$ "+ valorTotal.toFixed(2) + "\n" + "\n";
+    const textoValor = "Total: R$ "+ valorTotal.toFixed(decimais) + "\n" + "\n";
     const textoNome = "Nome: " + nome + "\n";
     const textoEnd = "Endereço: " + endereco + "\n";
 
@@ -158,6 +157,6 @@ function cancelar(){
     const limparTela = document.querySelector(".inativaFundo");
     limparTela.classList.add("escondido");
 
-    const revisarPedido = document.querySelector(".confirmarPedido");
-    revisarPedido.classList.add("escondido");
+    const revisaPedido = document.querySelector(".confirmarPedido");
+    revisaPedido.classList.add("escondido");
 }
