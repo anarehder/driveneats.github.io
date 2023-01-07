@@ -1,5 +1,3 @@
-src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"
-
 var valorTotal = 0;
 var valorPrato = 0;
 var valorBebida = 0;
@@ -9,21 +7,22 @@ var nomeBebida;
 var nomeSobremesa;
 var nome;
 var endereco;
+const decimais = 2;
+const numSel = 3;
 
 function selecionaPrato(pratoSelecionado) {
+    //borda
     const selecionadoAnt = document.querySelector(".prato .selecionado");
-  
     if (selecionadoAnt !== null){
         selecionadoAnt.classList.remove("selecionado");
         valorPrato = 0;
     }
 
+    //ícone
     const selecionadoIconeAnt = document.querySelector(".prato .exibirIcon");
-    
     if (selecionadoIconeAnt !== null){
         selecionadoIconeAnt.classList.remove("exibirIcon");
     }
-
     let allChildren = pratoSelecionado.querySelectorAll(":scope > div");
     pratoSelecionado.classList.add("selecionado");
     allChildren.forEach((item) => item.classList.add("exibirIcon"));
@@ -31,42 +30,35 @@ function selecionaPrato(pratoSelecionado) {
     //nome do prato
     const nome1 = pratoSelecionado.getElementsByTagName("h1");
     nomePrato = nome1[0].innerHTML;
-    console.log(nomePrato);
 
     //preço
     const valor1 = pratoSelecionado.getElementsByClassName("escondido");
     const preco1 = valor1[0].innerHTML;
     valorPrato = Number(preco1);
 
-    //valorTotal += valorPrato;
-    console.log(valorPrato.toFixed(2));
-
+    //botão finalizar
     const qntdSelecionada = document.querySelectorAll(".selecionado").length;
-    console.log(qntdSelecionada);
-    if (qntdSelecionada === 3){
-        document.getElementById("botao").disabled = false;
+    const botao = document.querySelector("button");
+    if (qntdSelecionada === numSel && botao.disabled === true){
+        botao.disabled = false;
+        botao.innerHTML = "Fechar pedido";
     }
-
 }
 
-
-
 function selecionaBebida(bebidaSelecionada) {
+    //borda
     const selecionadoAnt = document.querySelector(".bebida .selecionado");
- 
-    const selecionadoIconeAnt = document.querySelector(".bebida .exibirIcon");
-    
-    let allChildren = bebidaSelecionada.querySelectorAll(":scope > div");
-
     if (selecionadoAnt !== null){
         selecionadoAnt.classList.remove("selecionado");
         valorBebida = 0;
     }
 
+    //ícone
+    const selecionadoIconeAnt = document.querySelector(".bebida .exibirIcon");
     if (selecionadoIconeAnt !== null){
         selecionadoIconeAnt.classList.remove("exibirIcon");
     }
-
+    let allChildren = bebidaSelecionada.querySelectorAll(":scope > div");
     bebidaSelecionada.classList.add("selecionado");
     allChildren.forEach((item) => item.classList.add("exibirIcon"));
     
@@ -76,64 +68,52 @@ function selecionaBebida(bebidaSelecionada) {
     console.log(nomeBebida);
 
     //preço
-    let valor2 = bebidaSelecionada.getElementsByClassName("escondido");
-    let preco2 = valor2[0].innerHTML;
+    const valor2 = bebidaSelecionada.getElementsByClassName("escondido");
+    const preco2 = valor2[0].innerHTML;
     valorBebida = Number(preco2);
-    //valorTotal += valorBebida;
-    console.log(valorBebida.toFixed(2));
-
+  
+    //botão finalizar
     const qntdSelecionada = document.querySelectorAll(".selecionado").length;
-    console.log(qntdSelecionada);
-    if (qntdSelecionada === 3){
-        document.getElementById("botao").disabled = false;
-    }
+    const botao = document.querySelector("button");
+    if (qntdSelecionada === numSel && botao.disabled === true){
+        botao.disabled = false;
+        botao.innerHTML = "Fechar pedido";
+        }
 }
 
-
-
 function selecionaSobremesa(sobremesaSelecionada) {
-    // selecionando unicamente uma opção    
+    //borda
     const selecionadoAnt = document.querySelector(".sobremesa .selecionado");
- 
-    const selecionadoIconeAnt = document.querySelector(".sobremesa .exibirIcon");
-    
-    if (selecionadoAnt !== null){ //borda
+    if (selecionadoAnt !== null){ 
         selecionadoAnt.classList.remove("selecionado");
         valorSobremesa = 0;
     }
-
     sobremesaSelecionada.classList.add("selecionado");
-
-    if (selecionadoIconeAnt !== null){ //ícone
+    
+    //ícone
+    const selecionadoIconeAnt = document.querySelector(".sobremesa .exibirIcon");
+    if (selecionadoIconeAnt !== null){ 
         selecionadoIconeAnt.classList.remove("exibirIcon");
     } 
-
     let allChildren = sobremesaSelecionada.querySelectorAll(":scope > div");
     allChildren.forEach((item) => item.classList.add("exibirIcon"));
 
     //nome da sobremesa
     const nome3 = sobremesaSelecionada.getElementsByTagName("h1");
     nomeSobremesa = nome3[0].innerHTML;
-    console.log(nomeSobremesa);
     
     //preço
-    let valor3 = sobremesaSelecionada.getElementsByClassName("escondido");
-    let preco3 = valor3[0].textContent;
+    const valor3 = sobremesaSelecionada.getElementsByClassName("escondido");
+    const preco3 = valor3[0].textContent;
     valorSobremesa = Number(preco3);
-    //valorTotal += valorSobremesa;
-    console.log(valorSobremesa.toFixed(2));
 
+    //botão finalizar
     const qntdSelecionada = document.querySelectorAll(".selecionado").length;
     const botao = document.querySelector("button");
-    console.log(qntdSelecionada);
-
-    if (qntdSelecionada === 3){
-        if (botao.disabled === true){
+    if (qntdSelecionada === numSel && botao.disabled === true){
         botao.disabled = false;
         botao.innerHTML = "Fechar pedido";
         }
-    }
-
 }
 
 function revisarPedido(){
@@ -150,31 +130,27 @@ function revisarPedido(){
     editarListaPedidos.innerHTML = nomePrato + "<br>" + nomeBebida + "<br>" + nomeSobremesa;
 
     const editarListaPrecos = document.querySelector(".precos");
-    editarListaPrecos.innerHTML = "R$ " + valorPrato.toFixed(2) + "<br>" + "R$ " + valorBebida.toFixed(2) + "<br>" + "R$ " + valorSobremesa.toFixed(2);
+    editarListaPrecos.innerHTML = "R$ " + valorPrato.toFixed(decimais) + "<br>" + "R$ " + valorBebida.toFixed(decimais) + "<br>" + "R$ " + valorSobremesa.toFixed(decimais);
     
     valorTotal = valorPrato + valorBebida + valorSobremesa;
 
     const editarTotal = document.querySelector(".valor");
-    editarTotal.innerHTML = "R$ " + valorTotal.toFixed(2);
+    editarTotal.innerHTML = "R$ " + valorTotal.toFixed(decimais);
 }
 
 function enviarPedido(){
-    let textoInicial = "Olá, gostaria de fazer o pedido:" + "\n";
-    let textoPrato = "- Prato: " + nomePrato + "\n";
-    let textoBebida = "- Bebida: " + nomeBebida + "\n";
-    let textoSobremesa = "- Sobremesa: "+ nomeSobremesa + "\n";
-    let textoValor = "Total: R$ "+ valorTotal.toFixed(2) + "\n" + "\n";
-    let textoNome = "Nome: " + nome + "\n";
-    let textoEnd = "Endereço: " + endereco + "\n";
+    const textoInicial = "Olá, gostaria de fazer o pedido:" + "\n";
+    const textoPrato = "- Prato: " + nomePrato + "\n";
+    const textoBebida = "- Bebida: " + nomeBebida + "\n";
+    const textoSobremesa = "- Sobremesa: "+ nomeSobremesa + "\n";
+    const textoValor = "Total: R$ "+ valorTotal.toFixed(2) + "\n" + "\n";
+    const textoNome = "Nome: " + nome + "\n";
+    const textoEnd = "Endereço: " + endereco + "\n";
 
+    const textoTotal = textoInicial+textoPrato+textoBebida+textoSobremesa+textoValor+textoNome+textoEnd;
+    const textoWhatasppInicial = encodeURIComponent(textoTotal);
 
-    let textoTotal = textoInicial+textoPrato+textoBebida+textoSobremesa+textoValor+textoNome+textoEnd;
-    console.log(textoTotal);
-
-    let textoWhatasppInicial = encodeURIComponent(textoTotal);
-
-    let textoWhatasppFinal = "https://wa.me/5534984339233?text="+textoWhatasppInicial;
-    console.log(textoWhatasppFinal);
+    const textoWhatasppFinal = "https://wa.me/5534984339233?text="+textoWhatasppInicial;
     window.location.replace(textoWhatasppFinal);
 }
 
