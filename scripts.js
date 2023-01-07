@@ -7,6 +7,8 @@ var valorSobremesa = 0;
 var nomePrato;
 var nomeBebida;
 var nomeSobremesa;
+var nome;
+var endereco;
 
 function selecionaPrato(pratoSelecionado) {
     const selecionadoAnt = document.querySelector(".prato .selecionado");
@@ -134,16 +136,39 @@ function selecionaSobremesa(sobremesaSelecionada) {
 
 }
 
-function enviarPedido(){
+function revisarPedido(){
+    nome = prompt("Qual seu nome?");
+    endereco = prompt("Qual seu endereço?");
+
+    const limparTela = document.querySelector(".inativaFundo");
+    limparTela.classList.remove("escondido");
+
+    const revisarPedido = document.querySelector(".confirmarPedido");
+    revisarPedido.classList.remove("escondido");
+
+    const editarListaPedidos = document.querySelector(".pedido");
+    editarListaPedidos.innerHTML = nomePrato + "<br>" + nomeBebida + "<br>" + nomeSobremesa;
+
+    const editarListaPrecos = document.querySelector(".precos");
+    editarListaPrecos.innerHTML = "R$ " + valorPrato.toFixed(2) + "<br>" + "R$ " + valorBebida.toFixed(2) + "<br>" + "R$ " + valorSobremesa.toFixed(2);
+    
     valorTotal = valorPrato + valorBebida + valorSobremesa;
 
+    const editarTotal = document.querySelector(".valor");
+    editarTotal.innerHTML = "R$ " + valorTotal.toFixed(2);
+}
+
+function enviarPedido(){
     let textoInicial = "Olá, gostaria de fazer o pedido:" + "\n";
     let textoPrato = "- Prato: " + nomePrato + "\n";
     let textoBebida = "- Bebida: " + nomeBebida + "\n";
     let textoSobremesa = "- Sobremesa: "+ nomeSobremesa + "\n";
-    let textoValor = "Total: R$ "+ valorTotal.toFixed(2);
+    let textoValor = "Total: R$ "+ valorTotal.toFixed(2) + "\n" + "\n";
+    let textoNome = "Nome: " + nome + "\n";
+    let textoEnd = "Endereço: " + endereco + "\n";
 
-    let textoTotal = textoInicial+textoPrato+textoBebida+textoSobremesa+textoValor
+
+    let textoTotal = textoInicial+textoPrato+textoBebida+textoSobremesa+textoValor+textoNome+textoEnd;
     console.log(textoTotal);
 
     let textoWhatasppInicial = encodeURIComponent(textoTotal);
@@ -151,4 +176,12 @@ function enviarPedido(){
     let textoWhatasppFinal = "https://wa.me/5534984339233?text="+textoWhatasppInicial;
     console.log(textoWhatasppFinal);
     window.location.replace(textoWhatasppFinal);
+}
+
+function cancelar(){
+    const limparTela = document.querySelector(".inativaFundo");
+    limparTela.classList.add("escondido");
+
+    const revisarPedido = document.querySelector(".confirmarPedido");
+    revisarPedido.classList.add("escondido");
 }

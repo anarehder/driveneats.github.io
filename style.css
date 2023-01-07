@@ -178,6 +178,96 @@ button:disabled{
     display: flex;
 }
 
+.inativaFundo{
+    background-color: #FFFFFF;
+    opacity: 0.9;
+    z-index: 3;
+    position: fixed;
+    top: 0;
+    height: 100%;
+}
+
+.confirmarPedido{
+    z-index: 4;
+    width: 380px;
+    height: 350px;
+    background-color: #50D074;
+    position: fixed;
+    top: calc(50% - 175px);
+    left: calc(50% - 190px);
+    border-radius: 9px;
+}
+
+.topo{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 26px;
+    color:#FFFFFF;
+    text-align: center;
+    padding: 21px 0;
+}
+
+.resumo{
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 39px;
+    color:#FFFFFF;
+    padding-bottom: 15px;
+}
+
+.pedido{
+    padding-left: 25px;
+    text-align: left;
+}
+
+.precos{
+    padding-right: 25px;
+    text-align: right;
+}
+
+
+.total {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 25px;
+    padding-left: 25px;
+    text-align: left;
+  }
+
+.valor {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 25px;
+    padding-right: 25px;
+    text-align: right;
+}
+
+.pedir{
+    width: 333px;
+    height: 52px;
+    background-color: #FFFFFF;
+    color: #50D074;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 52px;
+    text-align: center;
+    margin-left: 25px;
+    border-radius: 100px;
+}
+
+.cancelar{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+    color: #FFFFFF;
+}
 
 @media (max-width: 600px) {
     .largura{

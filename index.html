@@ -153,9 +153,23 @@
     </div>
    
     <footer class="largura">
-        <button data-test="order-btn" disabled id="botao" onclick="enviarPedido()"> Selecione os 3 itens <br> para fechar o pedido
+        <button data-test="order-btn" disabled id="botao" onclick="revisarPedido()"> Selecione os 3 itens <br> para fechar o pedido
         </button>
     </footer>
-
+    <div class="inativaFundo largura escondido">
+    </div>
+    <div data-test="confirm-order" class="confirmarPedido escondido">
+        <div class="topo">Confirme seu pedido</div>
+        <div class="resumo">
+            <div class="pedido">Prato <br> Bebida <br> Sobremesa</div>
+            <div class="precos">Prato <br> Bebida <br> Sobremesa</div>
+        </div>
+        <div class="resumo">
+            <div class="total">TOTAL</div>
+            <div class="valor">TOTAL</div>
+        </div>
+        <div data-test="confirm-order-btn" class="pedir" onclick="enviarPedido()">Tudo certo, pode pedir!</div>
+        <div data-test="cancel-order-btn" class="cancelar" onclick="cancelar()">Cancelar</div>
+    </div>    
     <script src="scripts.js"></script>
   </body>
