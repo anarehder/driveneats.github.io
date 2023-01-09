@@ -83,7 +83,7 @@ function selecionaBebida(bebidaSelecionada) {
 function selecionaSobremesa(sobremesaSelecionada) {
     //borda
     const selecionadoAnt = document.querySelector(".sobremesa .selecionado");
-    if (selecionadoAnt !== null){ 
+    if (selecionadoAnt !== null){
         selecionadoAnt.classList.remove("selecionado");
         valorSobremesa = 0;
     }
@@ -91,9 +91,9 @@ function selecionaSobremesa(sobremesaSelecionada) {
 
     //ícone
     const selecionadoIconeAnt = document.querySelector(".sobremesa .exibirIcon");
-    if (selecionadoIconeAnt !== null){ 
+    if (selecionadoIconeAnt !== null){
         selecionadoIconeAnt.classList.remove("exibirIcon");
-    } 
+    }
     const allChildren3 = sobremesaSelecionada.querySelectorAll(":scope > div");
     allChildren3.forEach((item) => item.classList.add("exibirIcon"));
 
